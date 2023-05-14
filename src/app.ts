@@ -14,7 +14,7 @@ const app = new App({
 
 async function init() {
   await app.start(process.env.PORsT || 3000);
-  console.log('[APP] app is running');
+  console.log('[Kaori] is happy, yikes :D');
   await redisInit();
   await route(app);
 }

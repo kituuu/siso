@@ -48,9 +48,7 @@ const plusplus = async (user: string): Promise<any> => {
   for (const batch in mdgData) {
     for (const usr in mdgData[batch]) {
       if (mdgData[batch][usr]['slackID'] == user) {
-        // console.log(mdgData[batch][usr]);
         mdgData[batch][usr]['score'] = mdgData[batch][usr]['score'] + 1;
-        // console.log(mdgData[batch][usr]);
         setValue('mdg', JSON.stringify(mdgData));
         return await [
           mdgData[batch][usr]['displayName'],
@@ -66,9 +64,7 @@ const minusminus = async (user: string): Promise<any> => {
   for (const batch in mdgData) {
     for (const usr in mdgData[batch]) {
       if (mdgData[batch][usr]['slackID'] == user) {
-        // console.log(mdgData[batch][usr]);
         mdgData[batch][usr]['score'] = mdgData[batch][usr]['score'] - 1;
-        // console.log(mdgData[batch][usr]);
         setValue('mdg', JSON.stringify(mdgData));
         return await [
           mdgData[batch][usr]['displayName'],
@@ -79,7 +75,7 @@ const minusminus = async (user: string): Promise<any> => {
   }
 };
 
-export const handleScoreUpdate = async (message: string): Promise<any> => {
+export const handleScoreUpdate = async (message: string): Promise<object> => {
   // To store all the fields of block ele
   let blockArr: any = [];
   let temp: string[] = message.split(' ');
@@ -104,7 +100,7 @@ export const handleScoreUpdate = async (message: string): Promise<any> => {
           ],
         });
       } else if (temp[i + 1] == '--') {
-        // if -- (same logic as that of ++)
+        // if -- (same logic as that of)
         let response: any = await minusminus(
           temp[i].slice(2, temp[i].length - 1)
         );
@@ -123,7 +119,8 @@ export const handleScoreUpdate = async (message: string): Promise<any> => {
     }
   }
 
-  return {
+  let blockData: Object = {
     blocks: blockArr,
   };
+  return blockData;
 };

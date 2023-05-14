@@ -1,6 +1,5 @@
 import {getValue} from '../services/redis';
 export const getInfo = async (mess: string): Promise<any> => {
-  console.log(mess);
   let mdgData: any = JSON.parse(await getValue('mdg'));
   if (mess.match(/<@[0-9a-zA-Z]*>/)) {
     let temp: string[] = mess.split(' ');
@@ -13,7 +12,7 @@ export const getInfo = async (mess: string): Promise<any> => {
           for (let user in mdgData[batch]) {
             if (mdgData[batch][user]['slackID'] == slackID) {
               let userData: Object = mdgData[batch][user];
-              console.log(userData);
+
               let response: object = {
                 blocks: [
                   {
