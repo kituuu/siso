@@ -3,10 +3,9 @@ import {getValue, setValue} from '../services/redis';
 export const score = async (batch: string): Promise<object> => {
   // Getting data from redis and parsing it
   let mdgData: any = JSON.parse(await getValue('mdg'));
-  // creating a block element's field array of all the rows
-  // header - heading
-  // divider : horizontal line
-  // section : Each section represents a row of the table
+  let nameString: string = 'Name\n';
+  let scoreString: string = 'Score\n';
+  // Boilerplate/protype of block components
   let scoreDataArr: any = [
     {
       type: 'header',
@@ -19,27 +18,12 @@ export const score = async (batch: string): Promise<object> => {
       type: 'divider',
     },
   ];
-  var nameString: string = 'Name\n';
-  var scoreString: string = 'Score\n';
+
   for (const user in mdgData[batch]) {
     nameString = nameString + String(mdgData[batch][user]['name']) + '\n';
     scoreString = scoreString + String(mdgData[batch][user]['score']) + '\n';
-
-    // console.log(scoreString);
-    // scoreDataArr.push({
-    //   type: 'section',
-    //   fields: [
-    //     {
-    //       type: 'mrkdwn',
-    //       text: String(mdgData[batch][user]['name']),
-    //     },
-    //     {
-    //       type: 'mrkdwn',
-    //       text: String(mdgData[batch][user]['score']),
-    //     },
-    //   ],
-    // });
   }
+  // adding names and scores to seperate section of block component
   scoreDataArr.push({
     type: 'section',
     fields: [
@@ -53,10 +37,10 @@ export const score = async (batch: string): Promise<object> => {
       },
     ],
   });
-  let blockData: Object = {
+
+  return {
     blocks: scoreDataArr,
   };
-  return blockData;
 };
 
 const plusplus = async (user: string): Promise<any> => {
@@ -99,14 +83,15 @@ export const handleScoreUpdate = async (message: string): Promise<any> => {
   // To store all the fields of block ele
   let blockArr: any = [];
   let temp: string[] = message.split(' ');
-  let userPlusPlus: string[] = [];
-  let userMinusMinus: string[] = [];
   for (let i: number = 0; i < temp.length - 1; i++) {
+    // using regular expression to check if any user is tagged or not
     if (temp[i].match(/<@[0-9a-zA-Z]*>/) != null) {
       if (temp[i + 1] == '++') {
+        // if ++ is used plusplus function is called which return name displayname and new score
         let response: any = await plusplus(
           temp[i].slice(2, temp[i].length - 1)
         );
+        // pushing it to new section of the block
         blockArr.push({
           type: 'section',
           fields: [
@@ -119,6 +104,7 @@ export const handleScoreUpdate = async (message: string): Promise<any> => {
           ],
         });
       } else if (temp[i + 1] == '--') {
+        // if -- (same logic as that of ++)
         let response: any = await minusminus(
           temp[i].slice(2, temp[i].length - 1)
         );
@@ -137,8 +123,7 @@ export const handleScoreUpdate = async (message: string): Promise<any> => {
     }
   }
 
-  let blockData: Object = {
+  return {
     blocks: blockArr,
   };
-  return blockData;
 };
