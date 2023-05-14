@@ -1,6 +1,6 @@
 import {ping} from './scripts/ping';
 import {sastenashe} from './scripts/sastenashe';
-import {score} from './scripts/score';
+import {handleScoreUpdate, score} from './scripts/score';
 export const route = async (app: any) => {
   // Route for ping
   app.message('sis ping', async ({say}: {say: Function}) => {
@@ -10,6 +10,7 @@ export const route = async (app: any) => {
   // Route for saste nashe (testing)
   app.message('sis saste nashe', async ({say}: {say: Function}) => {
     let response: string = await sastenashe();
+
     await say(response);
   });
   // Route for score
@@ -23,4 +24,14 @@ export const route = async (app: any) => {
       await say(response);
     }
   );
+  app.message('', async ({message, say}: {message: any; say: Function}) => {
+    if (
+      message.text.includes('sis') &&
+      (message.text.includes('++') || message.text.includes('--'))
+    ) {
+      await say(await handleScoreUpdate(String(message.text)));
+    }
+  });
 };
+
+///^sis @<U056FSDKPTM>++$/ || /^sis @<U056FSDKPTM> ++$/
