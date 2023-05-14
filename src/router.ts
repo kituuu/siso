@@ -1,3 +1,4 @@
+import {getInfo} from './scripts/info';
 import {ping} from './scripts/ping';
 import {handleScoreUpdate, score} from './scripts/score';
 export const route = async (app: any) => {
@@ -27,4 +28,11 @@ export const route = async (app: any) => {
       await say(await handleScoreUpdate(String(message.text)));
     }
   });
+  app.message(
+    'sis info',
+    async ({message, say}: {message: any; say: Function}) => {
+      let response: any = await getInfo(message.text);
+      say(response);
+    }
+  );
 };
