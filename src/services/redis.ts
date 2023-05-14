@@ -37,3 +37,7 @@ export async function getValue(key: string): Promise<any> {
   let data = await client.get(key);
   return data;
 }
+
+export async function getPing(): Promise<any> {
+  return client.ping();
+}
