@@ -2,78 +2,15 @@
   "b26": {
     "kituuu": {
       "name": "Karthik Ayangar",
-      "slackID": "U056FSDKPTM",
+      "slackID": "XXXXXXXXXXX",
       "displayName": "kitu",
       "score": 2,
-      "email": "karthik.ayangar7118@gmail.com",
-      "phone": 9522043670,
+      "email": "karthik.xyz@gmail.com",
+      "phone": 100001,
       "branch": "EE",
-      "room": "DF-16 RJB",
+      "room": "XX-FF RJB",
       "year": "1st",
       "github": "kituuu"
-    },
-    "shogo": {
-      "name": "Shourya goel",
-      "slackID": "U056FSDKPTM",
-      "displayName": "kitu",
-      "score": 2,
-      "email": "shouryagoel10000@gmail.com",
-      "phone": 9971749585,
-      "branch": "CSE",
-      "room": "RJB BS03",
-      "year": "1st",
-      "github": "Sh0g0-1758"
-    },
-    "kituuu1": {
-      "name": "Karthik Ayangar",
-      "slackID": "U056FSDKPTM",
-      "displayName": "kitu",
-      "score": 2,
-      "email": "karthik.ayangar7118@gmail.com",
-      "phone": 9522043670,
-      "branch": "EE",
-      "room": "DF-16 RJB",
-      "year": "1st",
-      "github": "kituuu"
-    },
-    "shogo1": {
-      "name": "Shourya goel",
-      "slackID": "U056FSDKPTM",
-      "displayName": "kitu",
-      "score": 2,
-      "email": "shouryagoel10000@gmail.com",
-      "phone": 9971749585,
-      "branch": "CSE",
-      "room": "RJB BS03",
-      "year": "1st",
-      "github": "Sh0g0-1758"
-    }
-  },
-
-  "b25": {
-    "kituuu2": {
-      "name": "Karthik Ayangar",
-      "slackID": "U056FSDKPTM",
-      "displayName": "kitu",
-      "score": 2,
-      "email": "karthik.ayangar7118@gmail.com",
-      "phone": 9522043670,
-      "branch": "EE",
-      "room": "DF-16 RJB",
-      "year": "1st",
-      "github": "kituuu"
-    },
-    "shogo2": {
-      "name": "Shourya goel",
-      "slackID": "U056FSDKPTM",
-      "displayName": "kitu",
-      "score": 2,
-      "email": "shouryagoel10000@gmail.com",
-      "phone": 9971749585,
-      "branch": "CSE",
-      "room": "RJB BS03",
-      "year": "1st",
-      "github": "Sh0g0-1758"
     }
   }
 }
